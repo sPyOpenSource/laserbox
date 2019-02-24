@@ -91,7 +91,8 @@
     var HomepageView = TemplateView.extend({
         templateName: '#home-template',
         events: {
-            'click button.add': 'renderAddForm'
+            'click button.add': 'renderAddForm',
+            'click button.close': 'close'
         },
         initialize: function (options) {
           var self = this;
@@ -100,22 +101,14 @@
               success: $.proxy(self.render, self)
             });
         },
-        getContext: function () {
-            return {
-              items: app.items.sort() || null
-            };
-        },
         renderAddForm: function (event) {
-            var view = new NewItemView(),
-                link = $(event.currentTarget),
-                self = this;
-            event.preventDefault();
-            link.before(view.el);
-            link.hide();
-            view.render();
-            view.on('done', function () {
-                self.render();
-            });
+            this.$modal = document.getElementById('modal');
+            console.log(this.$modal);
+            this.$modal.style.display = "block";
+        },
+        close: function (event) {
+            this.$modal = document.getElementById('modal');
+            this.$modal.style.display = "none";
         }
     });
 
