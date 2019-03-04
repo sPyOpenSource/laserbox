@@ -10,17 +10,40 @@ var camera, scene, renderer, geometry, mesh, projector;
 var targetList = [];
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
-
-function changeCanvas(test, ctx) {
+var textureRight, textureFront, textureTop, textureBack, textureFront, textureBottom;
+function changeCanvas(text, ctx) {
     ctx.font = 'bold 40pt Arial';
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, size, size);
     ctx.fillStyle = 'white';
-    ctx.fillRect(10, 10, size - 20, size - 20);
-    ctx.fillStyle = 'black';
+    ctx.fillRect(2, 2, size - 4, size - 4);
+    ctx.fillStyle = 'grey';
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(test, size / 2, size / 2);
+    ctx.fillText(text, size / 2, size / 2);
+}
+
+function changeCanvasCircle(x, y, size, ctx) {
+    ctx.lineWidth = 5;
+    ctx.fillStyle = 'black'
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, 2 * Math.PI);
+    ctx.stroke();
+}
+
+function changeCanvasText(x, y, text, ctx) {
+    ctx.font = 'bold 40pt Arial';
+    ctx.fillStyle = 'black'
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, x, y);
+}
+
+function changeCanvasRect(x, y, width, hight, ctx) {
+    ctx.lineWidth = 5;
+    ctx.fillStyle = 'black'
+    ctx.rect(x, y, width, hight);
+    ctx.stroke();
 }
 
 function onDocumentMouseDown( event )
@@ -117,6 +140,12 @@ function init() {
     canvasRight.width = canvasRight.height = size;
     canvasTop.width = canvasTop.height = size;
     canvasBottom.width = canvasBottom.height = size;
+    textureRight = new THREE.Texture(canvasRight);
+    textureLeft = new THREE.Texture(canvasLeft);
+    textureTop = new THREE.Texture(canvasTop);
+    textureBottom = new THREE.Texture(canvasBottom);
+    textureFront = new THREE.Texture(canvasFront);
+    textureBack = new THREE.Texture(canvasBack);
 
     changeCanvas("front", ctxFront);
     changeCanvas("back", ctxBack);
@@ -124,18 +153,6 @@ function init() {
     changeCanvas("right", ctxRight);
     changeCanvas("bottom", ctxBottom);
     changeCanvas("top", ctxTop);
-    var textureRight = new THREE.Texture(canvasRight);
-    var textureLeft = new THREE.Texture(canvasLeft);
-    var textureTop = new THREE.Texture(canvasTop);
-    var textureBottom = new THREE.Texture(canvasBottom);
-    var textureFront = new THREE.Texture(canvasFront);
-    var textureBack = new THREE.Texture(canvasBack);
-    textureRight.needsUpdate = true;
-    textureLeft.needsUpdate = true;
-    textureTop.needsUpdate = true;
-    textureBottom.needsUpdate = true;
-    textureFront.needsUpdate = true;
-    textureBack.needsUpdate = true;
 
     var materials = [
       new THREE.MeshBasicMaterial({ map: textureRight }),
@@ -156,9 +173,12 @@ function init() {
 
 function animate() {
     requestAnimationFrame(animate);
-
-    //changeCanvas();
-    //texture.needsUpdate = true;
+    textureRight.needsUpdate  = true;
+    textureLeft.needsUpdate   = true;
+    textureTop.needsUpdate    = true;
+    textureBottom.needsUpdate = true;
+    textureFront.needsUpdate  = true;
+    textureBack.needsUpdate   = true;
     renderer.render(scene, camera);
 }
 

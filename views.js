@@ -92,7 +92,12 @@
         templateName: '#home-template',
         events: {
             'click button.add': 'renderAddForm',
-            'click button.close': 'close'
+            'click button.close': 'close',
+            'click button.hole': 'hole',
+            'click button.rectangularModal': 'modalRectangular',
+            'click button.rectangular': 'rectangular',
+            'click button.textModal': 'modalText',
+            'click button.text': 'text'
         },
         initialize: function (options) {
           var self = this;
@@ -103,12 +108,136 @@
         },
         renderAddForm: function (event) {
             this.$modal = document.getElementById('modal');
-            console.log(this.$modal);
+            this.$modal.style.display = "block";
+        },
+        modalRectangular: function (event) {
+            this.$modal = document.getElementById('modalRectangular');
+            this.$modal.style.display = "block";
+        },
+        modalText: function (event) {
+            this.$modal = document.getElementById('modalText');
             this.$modal.style.display = "block";
         },
         close: function (event) {
             this.$modal = document.getElementById('modal');
             this.$modal.style.display = "none";
+            this.$modal = document.getElementById('modalRectangular');
+            this.$modal.style.display = "none";
+            this.$modal = document.getElementById('modalText');
+            this.$modal.style.display = "none";
+        },
+        hole: function (event) {
+            this.$modal = document.getElementById('modal');
+            this.$face  = document.getElementById('faceHole').value;
+            this.$modal.style.display = "none";
+
+            var x = document.getElementById('XHole').value;
+            var y = document.getElementById('YHole').value;
+            var size = document.getElementById('D').value;
+            switch(this.$face) {
+              case "front":
+                var canvas = document.getElementById('canvasFront'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "back":
+                var canvas = document.getElementById('canvasBack'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "left":
+                var canvas = document.getElementById('canvasLeft'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "right":
+                var canvas = document.getElementById('canvasRight'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "top":
+                var canvas = document.getElementById('canvasTop'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "bottom":
+                var canvas = document.getElementById('canvasBottom'),
+                    ctx = canvas.getContext('2d');
+                break;
+              default:
+                // code block
+            }
+            changeCanvasCircle(x, y, size, ctx);
+        },
+        rectangular: function (event) {
+            this.$modal = document.getElementById('modalRectangular');
+            this.$face  = document.getElementById('faceRect').value;
+            this.$modal.style.display = "none";
+            var x = document.getElementById('XRect').value;
+            var y = document.getElementById('YRect').value;
+            var width = document.getElementById('W').value;
+            var hight = document.getElementById('H').value;
+            switch(this.$face) {
+              case "front":
+                var canvas = document.getElementById('canvasFront'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "back":
+                var canvas = document.getElementById('canvasBack'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "left":
+                var canvas = document.getElementById('canvasLeft'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "right":
+                var canvas = document.getElementById('canvasRight'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "top":
+                var canvas = document.getElementById('canvasTop'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "bottom":
+                var canvas = document.getElementById('canvasBottom'),
+                    ctx = canvas.getContext('2d');
+                break;
+              default:
+                // code block
+            }
+            changeCanvasRect(x, y, width, hight, ctx);
+        },
+        text: function (event) {
+            this.$modal = document.getElementById('modalText');
+            this.$modal.style.display = "none";
+            this.$face  = document.getElementById('faceText').value;
+            var text = document.getElementById('T').value;
+            var x = document.getElementById('XText').value;
+            var y = document.getElementById('YText').value;
+            switch(this.$face) {
+              case "front":
+                var canvas = document.getElementById('canvasFront'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "back":
+                var canvas = document.getElementById('canvasBack'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "left":
+                var canvas = document.getElementById('canvasLeft'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "right":
+                var canvas = document.getElementById('canvasRight'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "top":
+                var canvas = document.getElementById('canvasTop'),
+                    ctx = canvas.getContext('2d');
+                break;
+              case "bottom":
+                var canvas = document.getElementById('canvasBottom'),
+                    ctx = canvas.getContext('2d');
+                break;
+              default:
+                // code block
+            }
+            changeCanvasText(x, y, text, ctx);
         }
     });
 

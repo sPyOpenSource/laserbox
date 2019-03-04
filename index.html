@@ -25,12 +25,12 @@
 
         <script type="text/html" id="home-template">
           <h3>
-            You can use this website to get in touch with other programmers.
+            You can use this app to engrave a box.
           </h3>
           <div id="laserbox"></div>
           <button class="add">Round Holes</button>
-          <button>Rectangular Holes</button>
-          <button>Engrave Text</button>
+          <button class="rectangularModal">Rectangular Holes</button>
+          <button class="textModal">Engrave Text</button>
           <canvas id="canvasFront" style="display:none"></canvas>
           <canvas id="canvasBack" style="display:none"></canvas>
           <canvas id="canvasLeft" style="display:none"></canvas>
@@ -47,12 +47,75 @@
                   <h4 class="modal-title" id="modal-label">Add a round hole</h4>
                 </div>
                 <div class="modal-body">
-                  X (mm): <input type="number" value="2"></input><br>
-                  Y (mm): <input type="number" value="2"></input><br>
-                  Diameter (mm): <input type="number" value="0.5"></input>
+                  <select id="faceHole">
+                    <option value="front">Front</option>
+                    <option value="back">Back</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                  </select><br>
+                  X (mm): <input type="number" value="100" id="XHole"></input><br>
+                  Y (mm): <input type="number" value="100" id="YHole"></input><br>
+                  Diameter (mm): <input type="number" value="50" id="D"></input>
                 </div>
                 <div class="modal-footer">
-                  <button>Add</button>
+                  <button class="hole">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" id="modalRectangular">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">Add a rectangular hole</h4>
+                </div>
+                <div class="modal-body">
+                  <select id="faceRect">
+                    <option value="front">Front</option>
+                    <option value="back">Back</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                  </select><br>
+                  X (mm): <input type="number" value="100" id="XRect"></input><br>
+                  Y (mm): <input type="number" value="100" id="YRect"></input><br>
+                  Width (mm): <input type="number" value="50" id="W"></input><br>
+                  Hight (mm): <input type="number" value="50" id="H"></input>
+                </div>
+                <div class="modal-footer">
+                  <button class="rectangular">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" id="modalText">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">Add text</h4>
+                </div>
+                <div class="modal-body">
+                  <select id="faceText">
+                    <option value="front">Front</option>
+                    <option value="back">Back</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
+                  </select><br>
+                  X (mm): <input type="number" value="100" id="XText"></input><br>
+                  Y (mm): <input type="number" value="100" id="YText"></input><br>
+                  Text: <input type="text" value="text" id="T"></input>
+                </div>
+                <div class="modal-footer">
+                  <button class="text">Add</button>
                 </div>
               </div>
             </div>
