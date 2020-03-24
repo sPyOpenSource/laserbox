@@ -2,6 +2,8 @@
     var AppRouter = Backbone.Router.extend({
         routes: {
             '': 'home',
+            '2d': 'twoD',
+            '3d': 'threeD',
             'item/:id': 'item',
             'help': 'help',
             'about': 'about'
@@ -19,6 +21,14 @@
             Backbone.history.start();
         },
         home: function () {
+            var view = new app.views.HomepageView({el: this.contentElement});
+            this.render(view);
+        },
+        twoD: function(){
+            var view = new app.views.TwoDView({el: this.contentElement});
+            this.render(view);
+        },
+        threeD: function(){
             var view = new app.views.HomepageView({el: this.contentElement});
             this.render(view);
         },

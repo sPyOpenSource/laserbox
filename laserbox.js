@@ -11,6 +11,7 @@ var targetList = [];
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 var textureRight, textureFront, textureTop, textureBack, textureFront, textureBottom;
+
 function changeCanvas(text, ctx) {
     ctx.font = 'bold 40pt Arial';
     ctx.fillStyle = 'black';

@@ -126,6 +126,8 @@
         <script type="text/html" id="header-template">
             <ul class="nav nav-tabs" style="font-size:1.5em">
                 <li role="presentation"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#/2d">2D</a></li>
+                <li role="presentation"><a href="#/3d">3D</a></li>
                 <li role="presentation"><a href="#/help">Help</a></li>
                 <li role="presentation"><a href="#/about">About</a></li>
             </ul>
@@ -144,6 +146,73 @@
           <p>You can add an topic by clicking on Add An Topic button.</p>
           <strong><p>How can I react on an topic?</p></strong>
           <p>You can react on an topic by clicking on Reply button after clicking the topic.</p>
+        </script>
+
+        <script type="text/html" id="2d-template">
+          <h3>2D</h3>
+          <button class="format">Format</button><button class="material">Material</button><button class="shape">Shape</button><br>
+          <canvas id="myCanvas" width="600" height="400"></canvas>
+          <!-- Modal -->
+          <div class="modal" id="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">Change format</h4>
+                </div>
+                <div class="modal-body">
+                  X (mm): <input type="number" value="100" id="XHole"></input><br>
+                  Y (mm): <input type="number" value="100" id="YHole"></input>
+                </div>
+                <div class="modal-footer">
+                  <button class="hole">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" id="modalRectangular">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">Change material</h4>
+                </div>
+                <div class="modal-body">
+                  <select id="faceRect">
+                    <option value="front">Grenen 6mm</option>
+                    <option value="back">Elk 6mm</option>
+                    <option value="left">Vuren 9mm</option>
+                    <option value="right">Parline 4mm</option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button class="rectangular">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" id="modalText">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">Change shape</h4>
+                </div>
+                <div class="modal-body">
+                  <select id="faceText">
+                    <option value="front">Rechte hoeken</option>
+                    <option value="back">Ronde hoeken</option>
+                  </select>
+                </div>
+                <div class="modal-footer">
+                  <button class="text">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </script>
 
         <script type="text/html" id="new-item-template">

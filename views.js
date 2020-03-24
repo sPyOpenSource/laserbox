@@ -37,7 +37,7 @@
             this.done();
         },
         failure: function (model, status, error) {
-            if (status.status===502){
+            if (status.status === 502){
                 this.form.prepend(this.errorTemplate({msg: "Bad gateway."}))
             }
         },
@@ -88,6 +88,36 @@
         templateName: '#help-template',
     });
 
+    var TwoDView = TemplateView.extend({
+        templateName: '#2d-template',
+        events: {
+            'click button.format': 'format',
+            'click button.close': 'close',
+            'click button.material': 'material',
+            'click button.shape': 'shape'
+        },
+        format: function (event) {
+            this.$modal = document.getElementById('modal');
+            this.$modal.style.display = "block";
+        },
+        material: function (event) {
+            this.$modal = document.getElementById('modalRectangular');
+            this.$modal.style.display = "block";
+        },
+        shape: function (event) {
+            this.$modal = document.getElementById('modalText');
+            this.$modal.style.display = "block";
+        },
+        close: function (event) {
+            this.$modal = document.getElementById('modal');
+            this.$modal.style.display = "none";
+            this.$modal = document.getElementById('modalRectangular');
+            this.$modal.style.display = "none";
+            this.$modal = document.getElementById('modalText');
+            this.$modal.style.display = "none";
+        }
+    });
+
     var HomepageView = TemplateView.extend({
         templateName: '#home-template',
         events: {
@@ -102,9 +132,9 @@
         initialize: function (options) {
           var self = this;
           TemplateView.prototype.initialize.apply(this, arguments);
-            app.items.fetch({
+            /*app.items.fetch({
               success: $.proxy(self.render, self)
-            });
+            });*/
         },
         renderAddForm: function (event) {
             this.$modal = document.getElementById('modal');
@@ -299,4 +329,5 @@
     app.views.ItemView = ItemView;
     app.views.AboutView = AboutView;
     app.views.FooterView = FooterView;
+    app.views.TwoDView = TwoDView;
 })(jQuery, Backbone, _, app);
