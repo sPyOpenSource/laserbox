@@ -49,41 +49,6 @@
         }
     });
 
-    var NewMessageView = FormView.extend({
-        templateName: '#new-message-template',
-        className: 'new-message',
-        submit: function (event) {
-            var self = this;
-            FormView.prototype.submit.apply(this, arguments);
-            var attributes = this.serializeForm(this.form);
-            app.messages.create(attributes, {
-              wait: true,
-              success: $.proxy(self.success, self),
-              error: $.proxy(self.failure, self)
-            });
-        },
-        getContext: function () {
-            return {
-              item: app.session.get('item')
-            };
-        }
-    });
-
-    var NewItemView = FormView.extend({
-        templateName: '#new-item-template',
-        className: 'new-item',
-        submit: function (event) {
-            var self = this;
-            FormView.prototype.submit.apply(this, arguments);
-            var data = this.serializeForm(this.form);
-            app.items.create(data, {
-              wait: true,
-              success: $.proxy(self.success, self),
-              error: $.proxy(self.failure, self)
-            });
-        }
-    });
-
     var HelpView = TemplateView.extend({
         templateName: '#help-template',
     });
@@ -326,7 +291,6 @@
     app.views.HelpView = HelpView;
     app.views.HomepageView = HomepageView;
     app.views.HeaderView = HeaderView;
-    app.views.ItemView = ItemView;
     app.views.AboutView = AboutView;
     app.views.FooterView = FooterView;
     app.views.TwoDView = TwoDView;

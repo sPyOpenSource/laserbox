@@ -34,12 +34,6 @@
         }
     })
 
-    app.collections.Messages = Backbone.Collection.extend({
-        model: app.models.Message,
-        url: '/api/messages'
-    })
-    app.messages = new app.collections.Messages();
-
     app.collections.Items = Backbone.Collection.extend({
         model: app.models.Item,
         url: '/api/items',
