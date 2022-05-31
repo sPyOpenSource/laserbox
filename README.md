@@ -1,2 +1,2 @@
-# laserbox
-box laser cute g-code generation website. based on backbone.js
+# Laserbox
+Box laser cute g-code generator. It's a website based backbone.js application.
