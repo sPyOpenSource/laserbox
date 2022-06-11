@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Git Server</title>
-        <meta name="description" content="This is a Git Repositories Server.">
+        <meta name="description" content="This is a box engraving app.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script type="text/html" id="about-template">
@@ -19,13 +19,13 @@
             <p>
               Kind regards,
               <br>
-              Xuyi
+              X. Wang
             </p>
         </script>
 
-        <script type="text/html" id="home-template">
+        <script type="text/html" id="3d-template">
           <h3>
-            You can use this app to engrave a box.
+            Box engraving
           </h3>
           <div id="laserbox"></div>
           <button class="add">Round Holes</button>
@@ -85,7 +85,7 @@
                   X (mm): <input type="number" value="100" id="XRect"></input><br>
                   Y (mm): <input type="number" value="100" id="YRect"></input><br>
                   Width (mm): <input type="number" value="50" id="W"></input><br>
-                  Hight (mm): <input type="number" value="50" id="H"></input>
+                  Height (mm): <input type="number" value="50" id="H"></input>
                 </div>
                 <div class="modal-footer">
                   <button class="rectangular">Add</button>
@@ -112,7 +112,7 @@
                   </select><br>
                   X (mm): <input type="number" value="100" id="XText"></input><br>
                   Y (mm): <input type="number" value="100" id="YText"></input><br>
-                  Text: <input type="text" value="text" id="T"></input>
+                  Text: <input type="text" placeholder="text" id="T"></input>
                 </div>
                 <div class="modal-footer">
                   <button class="text">Add</button>
@@ -126,8 +126,8 @@
         <script type="text/html" id="header-template">
             <ul class="nav nav-tabs" style="font-size:1.5em">
                 <li role="presentation"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#/2d">2D</a></li>
-                <li role="presentation"><a href="#/3d">3D</a></li>
+                <li role="presentation"><a href="#/2d">2D-View</a></li>
+                <li role="presentation"><a href="#/3d">3D-View</a></li>
                 <li role="presentation"><a href="#/help">Help</a></li>
                 <li role="presentation"><a href="#/about">About</a></li>
             </ul>
@@ -149,8 +149,8 @@
         </script>
 
         <script type="text/html" id="2d-template">
-          <h3>2D</h3>
-          <button class="format">Format</button><button class="material">Material</button><button class="shape">Shape</button><br>
+          <h3>2D view</h3>
+          <button class="format">Size</button><button class="material">Material</button><button class="shape">Shape</button><br>
           <canvas id="myCanvas" width="600" height="400"></canvas>
           <!-- Modal -->
           <div class="modal" id="modal">
@@ -159,11 +159,11 @@
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                   </button>
-                  <h4 class="modal-title" id="modal-label">Change format</h4>
+                  <h4 class="modal-title" id="modal-label">Change size</h4>
                 </div>
                 <div class="modal-body">
-                  X (mm): <input type="number" value="100" id="XHole"></input><br>
-                  Y (mm): <input type="number" value="100" id="YHole"></input>
+                  Width (mm): <input type="number" value="100" id="XHole"></input><br>
+                  Height (mm): <input type="number" value="100" id="YHole"></input>
                 </div>
                 <div class="modal-footer">
                   <button class="hole">OK</button>

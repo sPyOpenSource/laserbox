@@ -21,7 +21,7 @@
             Backbone.history.start();
         },
         home: function () {
-            var view = new app.views.HomepageView({el: this.contentElement});
+            var view = new app.views.HelpView({el: this.contentElement});
             this.render(view);
         },
         twoD: function(){
@@ -29,7 +29,7 @@
             this.render(view);
         },
         threeD: function(){
-            var view = new app.views.HomepageView({el: this.contentElement});
+            var view = new app.views.ThreeDView({el: this.contentElement});
             this.render(view);
         },
         item: function (id) {

@@ -24,7 +24,7 @@ function changeCanvas(text, ctx) {
     ctx.fillText(text, size / 2, size / 2);
 }
 
-function changeCanvasCircle(x, y, size, ctx) {
+function changeCircle(x, y, size, ctx) {
     ctx.lineWidth = 5;
     ctx.fillStyle = 'black'
     ctx.beginPath();
@@ -32,7 +32,7 @@ function changeCanvasCircle(x, y, size, ctx) {
     ctx.stroke();
 }
 
-function changeCanvasText(x, y, text, ctx) {
+function changeText(x, y, text, ctx) {
     ctx.font = 'bold 40pt Arial';
     ctx.fillStyle = 'black'
     ctx.textAlign = "center";
@@ -40,14 +40,14 @@ function changeCanvasText(x, y, text, ctx) {
     ctx.fillText(text, x, y);
 }
 
-function changeCanvasRect(x, y, width, hight, ctx) {
+function changeRect(x, y, width, hight, ctx) {
     ctx.lineWidth = 5;
     ctx.fillStyle = 'black'
     ctx.rect(x, y, width, hight);
     ctx.stroke();
 }
 
-function onDocumentMouseDown( event )
+function onMouseClick( event )
 {
   // the following line would stop any other event handler from firing
   // (such as the mouse's TrackballControls)
@@ -103,7 +103,7 @@ function onDocumentMouseDown( event )
 function handleResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  var width     = document.getElementById("laserbox").offsetWidth;
+  var width = document.getElementById("laserbox").offsetWidth;
   renderer.setSize( width, width *  window.innerHeight / window.innerWidth );
 }
 
@@ -111,7 +111,7 @@ function init() {
     renderer = new THREE.WebGLRenderer();
     var canvas = renderer.domElement;
     document.getElementById("laserbox").append(canvas);
-    canvas.addEventListener("mousedown", onDocumentMouseDown);
+    canvas.addEventListener("mousedown", onMouseClick);
     window.addEventListener('resize', handleResize);
     scene = new THREE.Scene();
 

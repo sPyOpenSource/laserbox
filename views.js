@@ -83,8 +83,8 @@
         }
     });
 
-    var HomepageView = TemplateView.extend({
-        templateName: '#home-template',
+    var ThreeDView = TemplateView.extend({
+        templateName: '#3d-template',
         events: {
             'click button.add': 'renderAddForm',
             'click button.close': 'close',
@@ -157,7 +157,7 @@
               default:
                 // code block
             }
-            changeCanvasCircle(x, y, size, ctx);
+            changeCircle(x, y, size, ctx);
         },
         rectangular: function (event) {
             this.$modal = document.getElementById('modalRectangular');
@@ -195,7 +195,7 @@
               default:
                 // code block
             }
-            changeCanvasRect(x, y, width, hight, ctx);
+            changeRect(x, y, width, hight, ctx);
         },
         text: function (event) {
             this.$modal = document.getElementById('modalText');
@@ -232,7 +232,7 @@
               default:
                 // code block
             }
-            changeCanvasText(x, y, text, ctx);
+            changeText(x, y, text, ctx);
         }
     });
 
@@ -289,7 +289,7 @@
     });
 
     app.views.HelpView = HelpView;
-    app.views.HomepageView = HomepageView;
+    app.views.ThreeDView = ThreeDView;
     app.views.HeaderView = HeaderView;
     app.views.AboutView = AboutView;
     app.views.FooterView = FooterView;
