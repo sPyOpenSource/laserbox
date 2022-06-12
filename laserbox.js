@@ -57,8 +57,8 @@ function onMouseClick( event )
   var et = event.target, de = renderer.domElement;
   var trueX = (event.pageX - et.offsetLeft);
   var trueY = (event.pageY - et.offsetTop);
-  mouse.x = ( trueX / de.width ) * 2 - 1;
-  mouse.y = - ( trueY / de.height ) * 2 + 1;
+  mouse.x =  ( trueX / de.width  ) * 2 - 1;
+  mouse.y = -( trueY / de.height ) * 2 + 1;
 
   // find intersections
   // create a Ray with origin at the mouse position
@@ -71,12 +71,12 @@ function onMouseClick( event )
   if ( intersects.length > 0 )
   {
     let faceIndex = intersects[0].faceIndex
-    canvasRight.style.display = "none";
-    canvasLeft.style.display = "none";
-    canvasTop.style.display = "none";
+    canvasRight.style.display  = "none";
+    canvasLeft.style.display   = "none";
+    canvasTop.style.display    = "none";
     canvasBottom.style.display = "none";
-    canvasFront.style.display = "none";
-    canvasBack.style.display = "none";
+    canvasFront.style.display  = "none";
+    canvasBack.style.display   = "none";
     if (faceIndex < 2){
       canvasRight.style.display = "block";
       console.log("right")
@@ -135,25 +135,25 @@ function init() {
     canvasTop = document.getElementById('canvasTop'),
         ctxTop = canvasTop.getContext('2d');
 
-    canvasFront.width = canvasFront.height = size;
-    canvasBack.width = canvasBack.height = size;
-    canvasLeft.width = canvasLeft.height = size;
-    canvasRight.width = canvasRight.height = size;
-    canvasTop.width = canvasTop.height = size;
+    canvasFront.width  = canvasFront.height  = size;
+    canvasBack.width   = canvasBack.height   = size;
+    canvasLeft.width   = canvasLeft.height   = size;
+    canvasRight.width  = canvasRight.height  = size;
+    canvasTop.width    = canvasTop.height    = size;
     canvasBottom.width = canvasBottom.height = size;
-    textureRight = new THREE.Texture(canvasRight);
-    textureLeft = new THREE.Texture(canvasLeft);
-    textureTop = new THREE.Texture(canvasTop);
+    textureRight  = new THREE.Texture(canvasRight);
+    textureLeft   = new THREE.Texture(canvasLeft);
+    textureTop    = new THREE.Texture(canvasTop);
     textureBottom = new THREE.Texture(canvasBottom);
-    textureFront = new THREE.Texture(canvasFront);
-    textureBack = new THREE.Texture(canvasBack);
+    textureFront  = new THREE.Texture(canvasFront);
+    textureBack   = new THREE.Texture(canvasBack);
 
-    changeCanvas("front", ctxFront);
-    changeCanvas("back", ctxBack);
-    changeCanvas("left", ctxLeft);
-    changeCanvas("right", ctxRight);
+    changeCanvas("front",  ctxFront);
+    changeCanvas("back",   ctxBack);
+    changeCanvas("left",   ctxLeft);
+    changeCanvas("right",  ctxRight);
     changeCanvas("bottom", ctxBottom);
-    changeCanvas("top", ctxTop);
+    changeCanvas("top",    ctxTop);
 
     var materials = [
       new THREE.MeshBasicMaterial({ map: textureRight }),
