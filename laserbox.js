@@ -1,11 +1,11 @@
 var width = window.innerWidth, height = window.innerHeight;
 var size = 256;
-var canvasFront, ctxFront;
-var canvasBack, ctxBack;
-var canvasLeft, ctxLeft;
-var canvasRight, ctxRight;
+var canvasFront,  ctxFront;
+var canvasBack,   ctxBack;
+var canvasLeft,   ctxLeft;
+var canvasRight,  ctxRight;
 var canvasBottom, ctxBottom;
-var canvasTop, ctxTop;
+var canvasTop,    ctxTop;
 var camera, scene, renderer, geometry, mesh, projector;
 var targetList = [];
 var raycaster = new THREE.Raycaster();
