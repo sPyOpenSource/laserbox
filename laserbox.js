@@ -1,5 +1,5 @@
 var width = window.innerWidth, height = window.innerHeight;
-var size = 256;
+var size = 60;
 var canvasFront,  ctxFront;
 var canvasBack,   ctxBack;
 var canvasLeft,   ctxLeft;
@@ -13,11 +13,11 @@ var mouse = new THREE.Vector2();
 var textureRight, textureFront, textureTop, textureBack, textureFront, textureBottom;
 
 function changeCanvas(text, ctx) {
-    ctx.font = 'bold 40pt Arial';
+    ctx.font = 'bold 10pt Arial';
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, size, size);
     ctx.fillStyle = 'white';
-    ctx.fillRect(2, 2, size - 4, size - 4);
+    ctx.fillRect(1, 1, size - 2, size - 2);
     ctx.fillStyle = 'grey';
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -25,7 +25,7 @@ function changeCanvas(text, ctx) {
 }
 
 function changeCircle(x, y, size, ctx) {
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 1;
     ctx.fillStyle = 'black'
     ctx.beginPath();
     ctx.arc(x, y, size, 0, 2 * Math.PI);
@@ -33,7 +33,7 @@ function changeCircle(x, y, size, ctx) {
 }
 
 function changeText(x, y, text, ctx) {
-    ctx.font = 'bold 40pt Arial';
+    ctx.font = 'bold 10pt Arial';
     ctx.fillStyle = 'black'
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -41,7 +41,7 @@ function changeText(x, y, text, ctx) {
 }
 
 function changeRect(x, y, width, hight, ctx) {
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 1;
     ctx.fillStyle = 'black'
     ctx.rect(x, y, width, hight);
     ctx.stroke();

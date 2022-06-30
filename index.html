@@ -27,6 +27,20 @@
           <button class="add">Round Holes</button>
           <button class="rectangularModal">Rectangular Holes</button>
           <button class="textModal">Engrave Text</button>
+          <div class="hidden">
+            <canvas id="A0"></canvas>
+            <canvas id="canvasTop"></canvas>
+            <canvas id="A2"></canvas><br>
+            <canvas id="canvasLeft"></canvas>
+            <canvas id="canvasFront"></canvas>
+            <canvas id="canvasRight"></canvas><br>
+            <canvas id="C0" width="50"></canvas>
+            <canvas id="canvasBottom"></canvas>
+            <canvas id="C2"></canvas><br>
+            <canvas id="D0"></canvas>
+            <canvas id="canvasBack"></canvas>
+            <canvas id="D2"></canvas>
+          </div>
           <!-- Modal -->
           <div class="modal" id="modalRound">
             <div class="modal-dialog">
@@ -37,7 +51,7 @@
                   <h4 class="modal-title" id="modal-label">Add a round hole</h4>
                 </div>
                 <div class="modal-body">
-                  <select id="faceHole">
+                  Face: <select id="faceHole">
                     <option value="front">Front</option>
                     <option value="back">Back</option>
                     <option value="left">Left</option>
@@ -45,9 +59,9 @@
                     <option value="top">Top</option>
                     <option value="bottom">Bottom</option>
                   </select><br>
-                  X (mm): <input type="number" value="100" id="XHole"></input><br>
-                  Y (mm): <input type="number" value="100" id="YHole"></input><br>
-                  Diameter (mm): <input type="number" value="50" id="D"></input>
+                  X (mm): <input type="number" value="30" id="XHole"><br>
+                  Y (mm): <input type="number" value="30" id="YHole"><br>
+                  Diameter (mm): <input type="number" value="30" id="D">
                 </div>
                 <div class="modal-footer">
                   <button class="hole">Add</button>
@@ -64,7 +78,7 @@
                   <h4 class="modal-title" id="modal-label">Add a rectangular hole</h4>
                 </div>
                 <div class="modal-body">
-                  <select id="faceRect">
+                  Face: <select id="faceRect">
                     <option value="front">Front</option>
                     <option value="back">Back</option>
                     <option value="left">Left</option>
@@ -72,10 +86,10 @@
                     <option value="top">Top</option>
                     <option value="bottom">Bottom</option>
                   </select><br>
-                  X (mm): <input type="number" value="100" id="XRect"></input><br>
-                  Y (mm): <input type="number" value="100" id="YRect"></input><br>
-                  Width (mm): <input type="number" value="50" id="W"></input><br>
-                  Height (mm): <input type="number" value="50" id="H"></input>
+                  X (mm): <input type="number" value="30" id="XRect"><br>
+                  Y (mm): <input type="number" value="30" id="YRect"><br>
+                  Width (mm): <input type="number" value="30" id="W"><br>
+                  Height (mm): <input type="number" value="30" id="H">
                 </div>
                 <div class="modal-footer">
                   <button class="rectangular">Add</button>
@@ -92,7 +106,7 @@
                   <h4 class="modal-title" id="modal-label">Add text</h4>
                 </div>
                 <div class="modal-body">
-                  <select id="faceText">
+                  Face: <select id="faceText">
                     <option value="front">Front</option>
                     <option value="back">Back</option>
                     <option value="left">Left</option>
@@ -100,9 +114,9 @@
                     <option value="top">Top</option>
                     <option value="bottom">Bottom</option>
                   </select><br>
-                  X (mm): <input type="number" value="100" id="XText"></input><br>
-                  Y (mm): <input type="number" value="100" id="YText"></input><br>
-                  Text: <input type="text" placeholder="text" id="T"></input>
+                  X (mm): <input type="number" value="30" id="XText"><br>
+                  Y (mm): <input type="number" value="30" id="YText"><br>
+                  Text: <input type="text" placeholder="text" id="T">
                 </div>
                 <div class="modal-footer">
                   <button class="text">Add</button>
@@ -140,19 +154,22 @@
 
         <script type="text/html" id="2d-template">
           <h3>2D view</h3>
-          <button class="format">Size</button><button class="material">Material</button><button class="shape">Shape</button><button class="view">Full</button><br>
-          <canvas id="A0" style="display:none"></canvas>
-          <canvas id="canvasTop" style="display:none"></canvas>
-          <canvas id="A2" style="display:none"></canvas><br>
-          <canvas id="canvasLeft" style="display:none"></canvas>
-          <canvas id="canvasFront" style="display:none"></canvas>
-          <canvas id="canvasRight" style="display:none"></canvas><br>
-          <canvas id="C0" style="display:none"></canvas>
-          <canvas id="canvasBottom" style="display:none"></canvas>
-          <canvas id="C2" style="display:none"></canvas><br>
-          <canvas id="D0" style="display:none"></canvas>
-          <canvas id="canvasBack" style="display:none"></canvas>
-          <canvas id="D2" style="display:none"></canvas>
+          <canvas id="A0" width="60" height="60"></canvas>
+          <canvas id="canvasTop" width="60" height="60"></canvas>
+          <canvas id="A2" width="60" height="60"></canvas><br>
+          <canvas id="canvasLeft" width="60" height="60"></canvas>
+          <canvas id="canvasFront" width="60" height="60"></canvas>
+          <canvas id="canvasRight" width="60" height="60"></canvas><br>
+          <canvas id="C0" width="60" height="60"></canvas>
+          <canvas id="canvasBottom" width="60" height="60"></canvas>
+          <canvas id="C2" width="60" height="60"></canvas><br>
+          <canvas id="D0" width="60" height="60"></canvas>
+          <canvas id="canvasBack" width="60" height="60"></canvas>
+          <canvas id="D2" width="60" height="60"></canvas><br>
+          <button class="format">Size</button>
+          <button class="material">Material</button>
+          <button class="shape">Shape</button>
+          <button class="view">Full</button>
           <!-- Modal -->
           <div class="modal" id="modalSize">
             <div class="modal-dialog">
@@ -163,8 +180,8 @@
                   <h4 class="modal-title" id="modal-label">Change size</h4>
                 </div>
                 <div class="modal-body">
-                  Width (mm): <input type="number" value="100" id="XHole"></input><br>
-                  Height (mm): <input type="number" value="100" id="YHole"></input>
+                  Width (mm): <input type="number" value="60" id="XHole"><br>
+                  Height (mm): <input type="number" value="60" id="YHole">
                 </div>
                 <div class="modal-footer">
                   <button class="hole">OK</button>
@@ -181,7 +198,7 @@
                   <h4 class="modal-title" id="modal-label">Change material</h4>
                 </div>
                 <div class="modal-body">
-                  <select id="faceRect">
+                  <select id="faceMaterial">
                     <option value="front">Grenen 6mm</option>
                     <option value="back">Elk 6mm</option>
                     <option value="left">Vuren 9mm</option>
@@ -203,7 +220,7 @@
                   <h4 class="modal-title" id="modal-label">Change shape</h4>
                 </div>
                 <div class="modal-body">
-                  <select id="faceText">
+                  <select id="faceShape">
                     <option value="front">Rechte hoeken</option>
                     <option value="back">Ronde hoeken</option>
                   </select>

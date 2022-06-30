@@ -62,23 +62,23 @@
             'click button.shape': 'shape'
         },
         format: function (event) {
-            this.$modal = document.getElementById('modal');
+            this.$modal = document.getElementById('modalSize');
             this.$modal.style.display = "block";
         },
         material: function (event) {
-            this.$modal = document.getElementById('modalRectangular');
+            this.$modal = document.getElementById('modalMaterial');
             this.$modal.style.display = "block";
         },
         shape: function (event) {
-            this.$modal = document.getElementById('modalText');
+            this.$modal = document.getElementById('modalShape');
             this.$modal.style.display = "block";
         },
         close: function (event) {
-            this.$modal = document.getElementById('modal');
+            this.$modal = document.getElementById('modalSize');
             this.$modal.style.display = "none";
-            this.$modal = document.getElementById('modalRectangular');
+            this.$modal = document.getElementById('modalMaterial');
             this.$modal.style.display = "none";
-            this.$modal = document.getElementById('modalText');
+            this.$modal = document.getElementById('modalShape');
             this.$modal.style.display = "none";
         }
     });
@@ -102,7 +102,7 @@
             });*/
         },
         renderAddForm: function (event) {
-            this.$modal = document.getElementById('modal');
+            this.$modal = document.getElementById('modalRound');
             this.$modal.style.display = "block";
         },
         modalRectangular: function (event) {
@@ -114,7 +114,7 @@
             this.$modal.style.display = "block"
         },
         close: function (event) {
-            this.$modal = document.getElementById('modal')
+            this.$modal = document.getElementById('modalRound')
             this.$modal.style.display = "none"
             this.$modal = document.getElementById('modalRectangular')
             this.$modal.style.display = "none"
@@ -122,7 +122,7 @@
             this.$modal.style.display = "none"
         },
         hole: function (event) {
-            this.$modal = document.getElementById('modal')
+            this.$modal = document.getElementById('modalRound')
             this.$face  = document.getElementById('faceHole').value
             this.$modal.style.display = "none"
 
