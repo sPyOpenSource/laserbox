@@ -1,5 +1,5 @@
 var width = window.innerWidth, height = window.innerHeight;
-var size = 60;
+var size = 64;
 var canvasFront,  ctxFront;
 var canvasBack,   ctxBack;
 var canvasLeft,   ctxLeft;
@@ -24,15 +24,15 @@ function changeCanvas(text, ctx) {
     ctx.fillText(text, size / 2, size / 2);
 }
 
-function changeCircle(x, y, size, ctx) {
+function addCircle(x, y, size, ctx) {
     ctx.lineWidth = 1;
     ctx.fillStyle = 'black'
     ctx.beginPath();
-    ctx.arc(x, y, size, 0, 2 * Math.PI);
+    ctx.arc(x, y, size / 2, 0, 2 * Math.PI);
     ctx.stroke();
 }
 
-function changeText(x, y, text, ctx) {
+function addText(x, y, text, ctx) {
     ctx.font = 'bold 10pt Arial';
     ctx.fillStyle = 'black'
     ctx.textAlign = "center";
@@ -40,7 +40,7 @@ function changeText(x, y, text, ctx) {
     ctx.fillText(text, x, y);
 }
 
-function changeRect(x, y, width, hight, ctx) {
+function addRect(x, y, width, hight, ctx) {
     ctx.lineWidth = 1;
     ctx.fillStyle = 'black'
     ctx.rect(x, y, width, hight);
@@ -79,24 +79,17 @@ function onMouseClick( event )
     canvasBack.style.display   = "none";
     if (faceIndex < 2){
       canvasRight.style.display = "block";
-      console.log("right")
     } else if (faceIndex < 4) {
       canvasLeft.style.display = "block";
-      console.log("left")
     } else if (faceIndex < 6) {
       canvasTop.style.display = "block";
-      console.log("top")
     } else if (faceIndex < 8) {
       canvasBottom.style.display = "block";
-      console.log("bottom")
     } else if (faceIndex < 10) {
       canvasFront.style.display = "block";
-      console.log("front")
     } else {
       canvasBack.style.display = "block";
-      console.log("back")
     }
-    // change the color of the closest face.
   }
 }
 

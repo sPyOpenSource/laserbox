@@ -56,8 +56,8 @@
     var TwoDView = TemplateView.extend({
         templateName: '#2d-template',
         events: {
-            'click button.format': 'format',
             'click button.close': 'close',
+            'click button.format': 'format',
             'click button.material': 'material',
             'click button.shape': 'shape'
         },
@@ -86,8 +86,8 @@
     var ThreeDView = TemplateView.extend({
         templateName: '#3d-template',
         events: {
-            'click button.add': 'renderAddForm',
             'click button.close': 'close',
+            'click button.holeModal': 'modalHole',
             'click button.hole': 'hole',
             'click button.rectangularModal': 'modalRectangular',
             'click button.rectangular': 'rectangular',
@@ -101,7 +101,7 @@
               success: $.proxy(self.render, self)
             });*/
         },
-        renderAddForm: function (event) {
+        modalHole: function (event) {
             this.$modal = document.getElementById('modalRound');
             this.$modal.style.display = "block";
         },
@@ -125,12 +125,10 @@
             this.$modal = document.getElementById('modalRound')
             this.$face  = document.getElementById('faceHole').value
             this.$modal.style.display = "none"
-
             var x = document.getElementById('XHole').value
             var y = document.getElementById('YHole').value
             var size = document.getElementById('D').value
-            face(ctx)
-            changeCircle(x, y, size, ctx)
+            addCircle(x, y, size, this.face())
         },
         rectangular: function (event) {
             this.$modal = document.getElementById('modalRectangular')
@@ -140,8 +138,7 @@
             var y = document.getElementById('YRect').value
             var width = document.getElementById('W').value
             var hight = document.getElementById('H').value
-            face(ctx)
-            changeRect(x, y, width, hight, ctx)
+            addRect(x, y, width, hight, this.face())
         },
         text: function (event) {
             this.$modal = document.getElementById('modalText')
@@ -150,10 +147,9 @@
             var text = document.getElementById('T').value
             var x = document.getElementById('XText').value
             var y = document.getElementById('YText').value
-            face(ctx)
-            changeText(x, y, text, ctx)
+            addText(x, y, text, this.face())
         },
-        face: function(ctx) {
+        face: function() {
             switch(this.$face) {
               case "front":
                 var canvas = document.getElementById('canvasFront'),
@@ -182,6 +178,7 @@
               default:
                 // code block
             }
+            return ctx
         }
     });
 

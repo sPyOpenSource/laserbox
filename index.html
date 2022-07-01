@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script type="text/html" id="about-template">
-            <h3>Our vision</h3>
+            <h3>Feature</h3>
             <p>
-              Laserbox is a website which you can export gcode for a box engraving.
+              Laserbox is a web app which you can export g-code for box engraving.
             </p>
             <p>
               Kind regards,
@@ -24,22 +24,22 @@
             Box engraving
           </h3>
           <div id="laserbox"></div>
-          <button class="add">Round Holes</button>
+          <button class="holeModal">Round Holes</button>
           <button class="rectangularModal">Rectangular Holes</button>
           <button class="textModal">Engrave Text</button>
-          <div class="hidden">
-            <canvas id="A0"></canvas>
+          <div>
+            <canvas id="A0" width="64" height="64"></canvas>
             <canvas id="canvasTop"></canvas>
-            <canvas id="A2"></canvas><br>
+            <canvas id="A2" width="64" height="64"></canvas><br>
             <canvas id="canvasLeft"></canvas>
             <canvas id="canvasFront"></canvas>
             <canvas id="canvasRight"></canvas><br>
-            <canvas id="C0" width="50"></canvas>
+            <canvas id="C0" width="64" height="64"></canvas>
             <canvas id="canvasBottom"></canvas>
-            <canvas id="C2"></canvas><br>
-            <canvas id="D0"></canvas>
+            <canvas id="C2" width="64" height="64"></canvas><br>
+            <canvas id="D0" width="64" height="64"></canvas>
             <canvas id="canvasBack"></canvas>
-            <canvas id="D2"></canvas>
+            <canvas id="D2" width="64" height="64"></canvas>
           </div>
           <!-- Modal -->
           <div class="modal" id="modalRound">
