@@ -13,11 +13,9 @@ var mouse = new THREE.Vector2();
 var textureRight, textureFront, textureTop, textureBack, textureFront, textureBottom;
 
 function changeCanvas(text, ctx) {
-    ctx.font = 'bold 10pt Arial';
     ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, size, size);
-    ctx.fillStyle = 'white';
-    ctx.fillRect(1, 1, size - 2, size - 2);
+    addRect(0, 0, size, size, ctx)
+    ctx.font = 'bold 10pt Arial';
     ctx.fillStyle = 'grey';
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -41,7 +39,6 @@ function addText(x, y, text, ctx) {
 }
 
 function addRect(x, y, width, hight, ctx) {
-    ctx.lineWidth = 1;
     ctx.fillStyle = 'black'
     ctx.rect(x, y, width, hight);
     ctx.stroke();
@@ -57,8 +54,8 @@ function onMouseClick( event )
   var et = event.target, de = renderer.domElement;
   var trueX = (event.pageX - et.offsetLeft);
   var trueY = (event.pageY - et.offsetTop);
-  mouse.x =  ( trueX / de.width  ) * 2 - 1;
-  mouse.y = -( trueY / de.height ) * 2 + 1;
+  mouse.x =  (trueX / de.width) * 2 - 1;
+  mouse.y = -(trueY / de.height) * 2 + 1;
 
   // find intersections
   // create a Ray with origin at the mouse position
@@ -128,12 +125,12 @@ function init() {
     canvasTop = document.getElementById('canvasTop'),
         ctxTop = canvasTop.getContext('2d');
 
-    canvasFront.width  = canvasFront.height  = size;
+    /*canvasFront.width  = canvasFront.height  = size;
     canvasBack.width   = canvasBack.height   = size;
     canvasLeft.width   = canvasLeft.height   = size;
     canvasRight.width  = canvasRight.height  = size;
     canvasTop.width    = canvasTop.height    = size;
-    canvasBottom.width = canvasBottom.height = size;
+    canvasBottom.width = canvasBottom.height = size;*/
     textureRight  = new THREE.Texture(canvasRight);
     textureLeft   = new THREE.Texture(canvasLeft);
     textureTop    = new THREE.Texture(canvasTop);

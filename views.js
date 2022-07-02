@@ -61,6 +61,23 @@
             'click button.material': 'material',
             'click button.shape': 'shape'
         },
+        render: function () {
+            var context = this.getContext(),
+            html = this.template(context);
+            this.$el.html(html);
+            var imageData = document.getElementById("canvasTop").getContext("2d").getImageData(0,0,64,64)
+            document.getElementById("A1").getContext("2d").putImageData(imageData,0,0)
+            imageData = document.getElementById("canvasLeft").getContext("2d").getImageData(0,0,64,64)
+            document.getElementById("B0").getContext("2d").putImageData(imageData,0,0)
+            imageData = document.getElementById("canvasFront").getContext("2d").getImageData(0,0,64,64)
+            document.getElementById("B1").getContext("2d").putImageData(imageData,0,0)
+            imageData = document.getElementById("canvasRight").getContext("2d").getImageData(0,0,64,64)
+            document.getElementById("B2").getContext("2d").putImageData(imageData,0,0)
+            imageData = document.getElementById("canvasBottom").getContext("2d").getImageData(0,0,64,64)
+            document.getElementById("C1").getContext("2d").putImageData(imageData,0,0)
+            imageData = document.getElementById("canvasBack").getContext("2d").getImageData(0,0,64,64)
+            document.getElementById("D1").getContext("2d").putImageData(imageData,0,0)
+        },
         format: function (event) {
             this.$modal = document.getElementById('modalSize');
             this.$modal.style.display = "block";
@@ -95,8 +112,8 @@
             'click button.text': 'text'
         },
         initialize: function (options) {
-          var self = this;
-          TemplateView.prototype.initialize.apply(this, arguments);
+            var self = this;
+            TemplateView.prototype.initialize.apply(this, arguments);
             /*app.items.fetch({
               success: $.proxy(self.render, self)
             });*/

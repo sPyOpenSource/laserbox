@@ -27,20 +27,6 @@
           <button class="holeModal">Round Holes</button>
           <button class="rectangularModal">Rectangular Holes</button>
           <button class="textModal">Engrave Text</button>
-          <div>
-            <canvas id="A0" width="64" height="64"></canvas>
-            <canvas id="canvasTop"></canvas>
-            <canvas id="A2" width="64" height="64"></canvas><br>
-            <canvas id="canvasLeft"></canvas>
-            <canvas id="canvasFront"></canvas>
-            <canvas id="canvasRight"></canvas><br>
-            <canvas id="C0" width="64" height="64"></canvas>
-            <canvas id="canvasBottom"></canvas>
-            <canvas id="C2" width="64" height="64"></canvas><br>
-            <canvas id="D0" width="64" height="64"></canvas>
-            <canvas id="canvasBack"></canvas>
-            <canvas id="D2" width="64" height="64"></canvas>
-          </div>
           <!-- Modal -->
           <div class="modal" id="modalRound">
             <div class="modal-dialog">
@@ -154,18 +140,18 @@
 
         <script type="text/html" id="2d-template">
           <h3>2D view</h3>
-          <canvas id="A0" width="60" height="60"></canvas>
-          <canvas id="canvasTop" width="60" height="60"></canvas>
-          <canvas id="A2" width="60" height="60"></canvas><br>
-          <canvas id="canvasLeft" width="60" height="60"></canvas>
-          <canvas id="canvasFront" width="60" height="60"></canvas>
-          <canvas id="canvasRight" width="60" height="60"></canvas><br>
-          <canvas id="C0" width="60" height="60"></canvas>
-          <canvas id="canvasBottom" width="60" height="60"></canvas>
-          <canvas id="C2" width="60" height="60"></canvas><br>
-          <canvas id="D0" width="60" height="60"></canvas>
-          <canvas id="canvasBack" width="60" height="60"></canvas>
-          <canvas id="D2" width="60" height="60"></canvas><br>
+          <canvas id="A0" width="64" height="64"></canvas>
+          <canvas id="A1" width="64" height="64"></canvas>
+          <canvas id="A2" width="64" height="64"></canvas><br>
+          <canvas id="B0" width="64" height="64"></canvas>
+          <canvas id="B1" width="64" height="64"></canvas>
+          <canvas id="B2" width="64" height="64"></canvas><br>
+          <canvas id="C0" width="64" height="64"></canvas>
+          <canvas id="C1" width="64" height="64"></canvas>
+          <canvas id="C2" width="64" height="64"></canvas><br>
+          <canvas id="D0" width="64" height="64"></canvas>
+          <canvas id="D1" width="64" height="64"></canvas>
+          <canvas id="D2" width="64" height="64"></canvas><br>
           <button class="format">Size</button>
           <button class="material">Material</button>
           <button class="shape">Shape</button>
@@ -234,7 +220,35 @@
         </script>
     </head>
     <body>
+      <div class="hidden">
+        <canvas id="canvasTop" width="64" height="64"></canvas>
+        <canvas id="canvasLeft" width="64" height="64"></canvas>
+        <canvas id="canvasFront" width="64" height="64"></canvas>
+        <canvas id="canvasRight" width="64" height="64"></canvas>
+        <canvas id="canvasBottom" width="64" height="64"></canvas>
+        <canvas id="canvasBack" width="64" height="64"></canvas>
+      </div>
       <main id="content" class="container" role="main"></main>
+      <script>
+        var ctx = document.getElementById("canvasTop").getContext("2d")
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 64, 64);
+        ctx = document.getElementById("canvasLeft").getContext("2d")
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 64, 64);
+        ctx = document.getElementById("canvasFront").getContext("2d")
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 64, 64);
+        ctx = document.getElementById("canvasRight").getContext("2d")
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 64, 64);
+        ctx = document.getElementById("canvasBottom").getContext("2d")
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 64, 64);
+        ctx = document.getElementById("canvasBack").getContext("2d")
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 64, 64);
+      </script>
       <script src="vendor/jquery.js"></script>
       <script src="vendor/underscore.js"></script>
       <script src="vendor/backbone.js"></script>
