@@ -140,22 +140,11 @@
 
         <script type="text/html" id="2d-template">
           <h3>2D view</h3>
-          <canvas id="A0" width="64" height="64"></canvas>
-          <canvas id="A1" width="64" height="64"></canvas>
-          <canvas id="A2" width="64" height="64"></canvas><br>
-          <canvas id="B0" width="64" height="64"></canvas>
-          <canvas id="B1" width="64" height="64"></canvas>
-          <canvas id="B2" width="64" height="64"></canvas><br>
-          <canvas id="C0" width="64" height="64"></canvas>
-          <canvas id="C1" width="64" height="64"></canvas>
-          <canvas id="C2" width="64" height="64"></canvas><br>
-          <canvas id="D0" width="64" height="64"></canvas>
-          <canvas id="D1" width="64" height="64"></canvas>
-          <canvas id="D2" width="64" height="64"></canvas><br>
+          <canvas id="2D" width="800" height="600"></canvas><br>
           <button class="format">Size</button>
           <button class="material">Material</button>
           <button class="shape">Shape</button>
-          <button class="view">Full</button>
+          <button class="image">Image</button>
           <!-- Modal -->
           <div class="modal" id="modalSize">
             <div class="modal-dialog">
@@ -170,7 +159,7 @@
                   Height (mm): <input type="number" value="60" id="YHole">
                 </div>
                 <div class="modal-footer">
-                  <button class="hole">OK</button>
+                  <button class="size">OK</button>
                 </div>
               </div>
             </div>
@@ -192,7 +181,7 @@
                   </select>
                 </div>
                 <div class="modal-footer">
-                  <button class="rectangular">OK</button>
+                  <button class="thickness">OK</button>
                 </div>
               </div>
             </div>
@@ -212,7 +201,24 @@
                   </select>
                 </div>
                 <div class="modal-footer">
-                  <button class="text">OK</button>
+                  <button class="corn">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal" id="modalImage">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">Add image</h4>
+                </div>
+                <div class="modal-body">
+                  <input type="file" id="image" accept="image/*">
+                </div>
+                <div class="modal-footer">
+                  <button class="surface">OK</button>
                 </div>
               </div>
             </div>

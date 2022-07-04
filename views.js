@@ -59,24 +59,27 @@
             'click button.close': 'close',
             'click button.format': 'format',
             'click button.material': 'material',
-            'click button.shape': 'shape'
+            'click button.shape': 'shape',
+            'click button.image': 'image',
+            'click button.surface': 'surface'
         },
         render: function () {
             var context = this.getContext(),
             html = this.template(context);
             this.$el.html(html);
             var imageData = document.getElementById("canvasTop").getContext("2d").getImageData(0,0,64,64)
-            document.getElementById("A1").getContext("2d").putImageData(imageData,0,0)
+            var ctx = document.getElementById("2D").getContext("2d")
+            ctx.putImageData(imageData, 64 + 2, 0)
             imageData = document.getElementById("canvasLeft").getContext("2d").getImageData(0,0,64,64)
-            document.getElementById("B0").getContext("2d").putImageData(imageData,0,0)
+            ctx.putImageData(imageData, 0, 64 + 2)
             imageData = document.getElementById("canvasFront").getContext("2d").getImageData(0,0,64,64)
-            document.getElementById("B1").getContext("2d").putImageData(imageData,0,0)
+            ctx.putImageData(imageData, 64 + 2, 64 + 2)
             imageData = document.getElementById("canvasRight").getContext("2d").getImageData(0,0,64,64)
-            document.getElementById("B2").getContext("2d").putImageData(imageData,0,0)
+            ctx.putImageData(imageData, 64 * 2 + 4, 64 + 2)
             imageData = document.getElementById("canvasBottom").getContext("2d").getImageData(0,0,64,64)
-            document.getElementById("C1").getContext("2d").putImageData(imageData,0,0)
+            ctx.putImageData(imageData, 64 + 2, 64 * 2 + 4)
             imageData = document.getElementById("canvasBack").getContext("2d").getImageData(0,0,64,64)
-            document.getElementById("D1").getContext("2d").putImageData(imageData,0,0)
+            ctx.putImageData(imageData, 64 + 2, 64 * 3 + 6)
         },
         format: function (event) {
             this.$modal = document.getElementById('modalSize');
@@ -90,6 +93,23 @@
             this.$modal = document.getElementById('modalShape');
             this.$modal.style.display = "block";
         },
+        image: function (event) {
+            this.$model = document.getElementById('modalImage')
+            this.$model.style.display = "block"
+        },
+        surface: function (event) {
+            var img = document.getElementById('image').files[0]
+            var reader = new FileReader();
+            reader.onload = function(e)  {
+                var image = new Image();
+                image.src = e.target.result;
+                var ctx = document.getElementById('2D').getContext('2d')
+                ctx.drawImage(image, 0, 0, 800, 600)
+            }
+            reader.readAsDataURL(img);
+            this.$model = document.getElementById('modalImage')
+            this.$model.style.display =  "none"
+        },
         close: function (event) {
             this.$modal = document.getElementById('modalSize');
             this.$modal.style.display = "none";
@@ -97,6 +117,8 @@
             this.$modal.style.display = "none";
             this.$modal = document.getElementById('modalShape');
             this.$modal.style.display = "none";
+            this.$modal = document.getElementById('modalImage')
+            this.$modal.style.display = "none"
         }
     });
 
