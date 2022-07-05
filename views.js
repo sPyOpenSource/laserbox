@@ -98,15 +98,13 @@
             this.$model.style.display = "block"
         },
         surface: function (event) {
-            var img = document.getElementById('image').files[0]
-            var reader = new FileReader();
-            reader.onload = function(e)  {
-                var image = new Image();
-                image.src = e.target.result;
+            var file = document.getElementById('image').files[0]
+            var image = new Image();
+            image.onload = function() {
                 var ctx = document.getElementById('2D').getContext('2d')
                 ctx.drawImage(image, 0, 0, 800, 600)
             }
-            reader.readAsDataURL(img);
+            image.src = URL.createObjectURL(file);
             this.$model = document.getElementById('modalImage')
             this.$model.style.display =  "none"
         },
