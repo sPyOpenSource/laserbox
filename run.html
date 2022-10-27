@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!--image uploader-->
+	<input type='file' id="fileUpload" hidden/>
+    <!-- Load the AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<!--fabricjs-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.16/fabric.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!--navbar-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!--image processing-->
+	<script src="http://www.marvinj.org/releases/marvinj-0.8.min.js"></script> 
+	<!--js file-->
+	<script src="js.js"></script>
+	<script src="js_functions.js"></script>
+	<script src="js_functionsGeneral.js"></script>
+</head>
+
+<body>
+
+<!-- Close Mobile Menu by Clicking Outside Menu -->
+<script> 
+  $(document).on("click touchstart", function(e){
+     if( 
+       $(e.target).closest("#mobile-navigation").length == 0 &&
+       $('body').hasClass('sqs-mobile-nav-open') &&
+       $(e.target).closest("span.ctrl-button.menu").length == 0
+     ){
+       $('body').removeClass('sqs-mobile-nav-open');
+     }
+   });
+</script>
+<!-- -->
+
+<!--navbar-->
+<div class="icon-bar" id="iconBarTop">
+  <a id ="butDel" 		onclick="butDel()"  href="#" title="Delete">                <i class="fa fa-trash">     </i></a> 
+  <a id ="butUp" 		onclick="butUp()"   href="#" title="Move Object Layer Up">  <i class="fa fa-level-up">  </i></a> 
+  <a id ="butDown" 		onclick="butDown()" href="#" title="Move Object Layer Down"><i class="fa fa-level-down"></i></a>
+</div>
+<!--navbar-->	
+
+<!-- Actual App -->
+<div id="appSpace">
+	<div id="appDisplay">
+		<!--canvas-->
+		<canvas id="c" width="500" height="500" style="border:0px solid #000000"></canvas>
+		<script>
+			<!-- make canvas -->
+			var canvas1var = new fabric.Canvas('c');
+			F_initCanvas('images/pbg.2v2.png','images/pbg.1v2.png');
+		</script>
+		<!--canvas-->
+	</div>
+</div>
+<!-- -->
+
+<!--navbar-->
+<div class="icon-bar" id="iconBar">
+  <a id ="butLoadImage" 	onclick="butLoadImage()" href="#" title="Upload Image">   <i class="fa fa-image"></i>  </a> 
+  <a id ="butEmote" 		onclick="butEmote()" href="#"     title="Choose Image">   <i class="fa fa-smile-o"></i></a>  
+  <a id ="butText" 			onclick="butText()" href="#"      title="Place Text">     <small>Text</small>          </a> 
+  <a id ="butBackground" 	onclick="bgMenuOpen()" href="#"   title="Choose Material"><i class="fa fa-image"></i>  </a>
+  <a id ="butOk" 			onclick="butOk('images/pbg.1v2 - svgSave - engraving.png','images/pbg.1v2 - svgSave - cut.png')" href="#"        title="Done">           <i class="fa fa-check"></i>  </a> 
+</div>
+<!--navbar-->	
+
+<!--overlay menus--> 
+<div id="iconMenu" class="overlay" onclick="iconMenuClose()">
+	<script>HtmlIconMenu()</script>
+</div>
+<div id="bgMenu" class="overlay" onclick="bgMenuClose()">
+	<script>HtmlBgMenu()</script>
+</div>
+<!--overlay menus-->
+
+
+
+</body>
+</html>
